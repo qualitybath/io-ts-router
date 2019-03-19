@@ -1,8 +1,8 @@
 {
   "name": "io-ts-router",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
