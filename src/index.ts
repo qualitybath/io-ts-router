@@ -77,7 +77,9 @@ export type ValidatedRequestHandler<
 
 enum MissingValidator {}
 
-type ExtractType<T> = T extends t.Type<any> ? t.TypeOf<T> : MissingValidator;
+type ExtractType<T> = T extends t.Type<infer _U>
+  ? t.TypeOf<T>
+  : MissingValidator;
 
 interface ValidationRouterMatcher {
   (path: PathParams, ...handlers: ValidatedRequestHandler[]): void;
