@@ -212,9 +212,9 @@ forwarded@~0.1.2:
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
 fp-ts@^1.0.0:
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-1.15.0.tgz#7706d6761cc98ccbece91c2ff2e5a5b924f65f3d"
-  integrity sha512-D0gnY9qnpifaqNABqSKjttOW4YVpAHK7I7hcstJllbyqS1GKzbQoAguZYr77DhXzIXnsJiqo65dCHJZq6ouxiQ==
+  version "1.17.3"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-1.17.3.tgz#5064afc4bee8ddcaea567479bfc62d527e015825"
+  integrity sha512-r4gHfAWaRrYPsmdzRl1U9CkpbdOi8fPg5F5KiazAadENz5DKdWEaCDPl2Tf92fvkZGD/ekZ3EHu3gtXIVcsXtA==
 
 fresh@0.5.2:
   version "0.5.2"
@@ -243,15 +243,15 @@ inherits@2.0.3:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
-io-ts-types@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.4.4.tgz#e9809dde8d25257cf164ec18fad3e8e43b761d40"
-  integrity sha512-VOkqBu2yZOgy70x2/pIzlDWwMJZ6+ME1Uu+HGV26Sn8e3tJQd/iOqZ62ZOmgP/C1wSPcukygqe10e0pYOyMbxQ==
+io-ts-types@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.4.7.tgz#f6280da7432d6dae593d8ff064837f51bd4b96ba"
+  integrity sha512-VZ34RWV2ymbtboB0Ki6NPMiyhogGfRzHpyJrpez3auUMacTtX8b1UhW/ct+/zBYgXnE2txaeXowdQPt6BXY0wg==
 
-io-ts@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-1.8.3.tgz#b617159ad030b5c85e14192ffbf24dd054030b38"
-  integrity sha512-zrZRpGNqbuMu8LWJ7lNNQpgdjIiOsNsIfzk8CJpeuVmdnNExGBpb5Wwtp+G9gmMOzLqj4+iFA7+HiFGLzqgBFQ==
+io-ts@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-1.8.5.tgz#2e102f7f518abe17b0f7e7ede0db54a4c4ddc188"
+  integrity sha512-4HzDeg7mTygFjFIKh7ajBSanoVaFryYSFI0ocdwndSWl3eWQXhg3wVR0WI+Li5Vq11TIsoIngQszVbN4dy//9A==
   dependencies:
     fp-ts "^1.0.0"
 
