@@ -77,7 +77,7 @@ export type ValidatedRequestHandler<
 
 enum MissingValidator {}
 
-type ExtractType<T> = T extends t.Type<infer _U>
+type ExtractType<T> = T extends t.Type<infer _X, infer _Y, infer _Z>
   ? t.TypeOf<T>
   : MissingValidator;
 
