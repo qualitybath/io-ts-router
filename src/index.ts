@@ -75,26 +75,29 @@ export type ValidatedRequestHandler<
   next: NextFunction
 ) => any;
 
-enum MissingValidator {}
-
-type ExtractType<T> = T extends t.Type<infer _X, infer _Y, infer _Z>
-  ? t.TypeOf<T>
-  : MissingValidator;
+type MissingValidatorC = t.TypeC<{
+  MissingValidator: t.BooleanC;
+}>;
+type MissingValidator = t.TypeOf<MissingValidatorC>;
 
 interface ValidationRouterMatcher {
   (path: PathParams, ...handlers: ValidatedRequestHandler[]): void;
   (path: PathParams, ...handlers: RequestHandlerParams[]): void;
   <
-    B extends t.Type<any> | MissingValidator = MissingValidator,
-    P extends t.Type<any> | MissingValidator = MissingValidator,
-    Q extends t.Type<any> | MissingValidator = MissingValidator
+    B extends t.Type<any, any, any> = MissingValidatorC,
+    P extends t.Type<any, any, any> = MissingValidatorC,
+    Q extends t.Type<any, any, any> = MissingValidatorC
   >(
     path: PathParams,
-    validation: { body?: B; params?: P; query?: Q },
+    validation: {
+      body?: B;
+      params?: P;
+      query?: Q;
+    },
     ...handlers: ValidatedRequestHandler<
-      ExtractType<B>,
-      ExtractType<P>,
-      ExtractType<Q>
+      t.TypeOf<B>,
+      t.TypeOf<P>,
+      t.TypeOf<Q>
     >[]
   ): void;
 }
