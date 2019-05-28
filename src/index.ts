@@ -10,6 +10,17 @@ import {
 } from "express";
 import expressPromiseRouter from "express-promise-router";
 
+export class IoTsValidationError extends Error {
+  statusCode = 422;
+  name = 'IoTsValidationError';
+
+  constructor(message: string) {
+    super(message);
+    this.message = message;
+  }
+ 
+}
+
 type Omit<O, K> = Pick<O, Exclude<keyof O, K>>;
 
 enum MissingValidator {}
@@ -85,10 +96,7 @@ function validationRoute<
       // TODO: figure out which reporter we wanna use
       const report = PathReporter.report(result);
       if (result.isLeft()) {
-        return res.status(422).json({
-          success: false,
-          errors: report
-        });
+        throw new IoTsValidationError(JSON.stringify(report));
       }
       req.query = result.value;
     }
@@ -97,10 +105,7 @@ function validationRoute<
       // TODO: figure out which reporter we wanna use
       const report = PathReporter.report(result);
       if (result.isLeft()) {
-        return res.status(422).json({
-          success: false,
-          errors: report
-        });
+        throw new IoTsValidationError(JSON.stringify(report));
       }
       req.body = result.value;
     }
