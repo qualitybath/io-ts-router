@@ -12,13 +12,12 @@ import expressPromiseRouter from "express-promise-router";
 
 export class IoTsValidationError extends Error {
   statusCode = 422;
-  name = 'IoTsValidationError';
+  name = "IoTsValidationError";
 
   constructor(message: string) {
     super(message);
     this.message = message;
   }
- 
 }
 
 type Omit<O, K> = Pick<O, Exclude<keyof O, K>>;
@@ -81,7 +80,7 @@ function validationRoute<
   P extends t.Type<any> = never,
   Q extends t.Type<any> = never
 >(reqType: { body?: B; params?: P; query?: Q }) {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     if (reqType.params) {
       // TODO: params are always strings, so auto convert t.number to NumberFromString
       const result = reqType.params.decode(req.params);
