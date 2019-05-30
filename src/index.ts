@@ -96,7 +96,7 @@ function validationRoute<
       // TODO: figure out which reporter we wanna use
       const report = PathReporter.report(result);
       if (result.isLeft()) {
-        throw new IoTsValidationError(JSON.stringify(report));
+        throw new IoTsValidationError(report.join());
       }
       req.query = result.value;
     }
@@ -105,7 +105,7 @@ function validationRoute<
       // TODO: figure out which reporter we wanna use
       const report = PathReporter.report(result);
       if (result.isLeft()) {
-        throw new IoTsValidationError(JSON.stringify(report));
+        throw new IoTsValidationError(report.join());
       }
       req.body = result.value;
     }
