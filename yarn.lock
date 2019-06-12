@@ -251,10 +251,10 @@ io-ts-types@^0.4.7:
   resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.4.7.tgz#f6280da7432d6dae593d8ff064837f51bd4b96ba"
   integrity sha512-VZ34RWV2ymbtboB0Ki6NPMiyhogGfRzHpyJrpez3auUMacTtX8b1UhW/ct+/zBYgXnE2txaeXowdQPt6BXY0wg==
 
-io-ts@^1.8.5:
-  version "1.8.5"
-  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-1.8.5.tgz#2e102f7f518abe17b0f7e7ede0db54a4c4ddc188"
-  integrity sha512-4HzDeg7mTygFjFIKh7ajBSanoVaFryYSFI0ocdwndSWl3eWQXhg3wVR0WI+Li5Vq11TIsoIngQszVbN4dy//9A==
+io-ts@^1.8.6:
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-1.8.6.tgz#43930e025b88bbb317cb193bd9af784322a6fed6"
+  integrity sha512-0V0gbEfW5FnlEL++hO+j1cbxSvhH3f/i5Puz5AjmN6Q071vJONWTuOHttMSe60gi4DBHBTd2eHbSnHv37ptTnQ==
   dependencies:
     fp-ts "^1.0.0"
 
