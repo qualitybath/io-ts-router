@@ -93,18 +93,18 @@ function validationRoute<
     }
     if (reqType.query) {
       const result = reqType.query.decode(req.query);
-      // TODO: figure out which reporter we wanna use
-      const report = PathReporter.report(result);
       if (result.isLeft()) {
+        // TODO: figure out which reporter we wanna use
+        const report = PathReporter.report(result);
         throw new IoTsValidationError(report.join());
       }
       req.query = result.value;
     }
     if (reqType.body) {
       const result = reqType.body.decode(req.body);
-      // TODO: figure out which reporter we wanna use
-      const report = PathReporter.report(result);
       if (result.isLeft()) {
+        // TODO: figure out which reporter we wanna use
+        const report = PathReporter.report(result);
         throw new IoTsValidationError(report.join());
       }
       req.body = result.value;
