@@ -86,7 +86,8 @@ function validationRoute<
       const result = reqType.params.decode(req.params);
       // if params don't match then just send this down the middleware stack
       if (result.isLeft()) {
-        return next("route");
+        const report = PathReporter.report(result);
+        throw new IoTsValidationError(report.join());
       }
       req.params = result.value;
     }
