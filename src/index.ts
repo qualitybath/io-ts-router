@@ -84,7 +84,6 @@ function validationRoute<
     if (reqType.params) {
       // TODO: params are always strings, so auto convert t.number to NumberFromString
       const result = reqType.params.decode(req.params);
-      // if params don't match then just send this down the middleware stack
       if (result.isLeft()) {
         const report = PathReporter.report(result);
         throw new IoTsValidationError(report.join());
