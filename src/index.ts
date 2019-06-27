@@ -11,7 +11,7 @@ import {
 import expressPromiseRouter from "express-promise-router";
 
 export class IoTsValidationError extends Error {
-  statusCode = 422;
+  statusCode = 400;
   name = "IoTsValidationError";
 
   constructor(message: string) {
