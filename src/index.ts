@@ -6,7 +6,8 @@ import {
   NextFunction,
   Request,
   Response,
-  RequestHandler
+  RequestHandler,
+  RouterOptions
 } from "express";
 import expressPromiseRouter from "express-promise-router";
 
@@ -112,8 +113,8 @@ function validationRoute<
   };
 }
 
-function validationRouter(): ValidationRouter {
-  const router = expressPromiseRouter();
+function validationRouter(options?: RouterOptions): ValidationRouter {
+  const router = expressPromiseRouter(options);
   const methods: Method[] = ["get", "post", "put", "delete"];
   methods.forEach(method => {
     const orig = router[method].bind(router);
