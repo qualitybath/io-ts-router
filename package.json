@@ -16,7 +16,7 @@
     "express": "^4.17.1",
     "io-ts": "^1.10.4",
     "io-ts-types": "^0.4.7",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.6"
   },
   "peerDependencies": {
     "@types/express": "^4.17.3",
