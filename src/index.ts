@@ -1,6 +1,6 @@
 import * as t from "io-ts";
 import { PathParams, RequestHandlerParams } from "express-serve-static-core"; // eslint-disable-line import/no-unresolved, import/extensions
-import { PathReporter } from "io-ts/lib/PathReporter";
+import reporter from 'io-ts-reporters';
 import {
   Router,
   NextFunction,
@@ -23,7 +23,7 @@ export class IoTsValidationError extends Error {
 
 type Omit<O, K> = Pick<O, Exclude<keyof O, K>>;
 
-enum MissingValidator {}
+enum MissingValidator { }
 type MissingValidatorC = t.Type<MissingValidator>;
 
 type AddBody<V> = V extends MissingValidator ? {} : { body: V };
@@ -42,11 +42,11 @@ export type ValidatedRequestHandler<
   Body = MissingValidator,
   Params = MissingValidator,
   Query = MissingValidator
-> = (
-  req: ValidatedRequest<Body, Params, Query>,
-  res: Response,
-  next: NextFunction
-) => any;
+  > = (
+    req: ValidatedRequest<Body, Params, Query>,
+    res: Response,
+    next: NextFunction
+  ) => any;
 
 interface ValidationRouterMatcher {
   (path: PathParams, ...handlers: ValidatedRequestHandler[]): void;
@@ -55,7 +55,7 @@ interface ValidationRouterMatcher {
     B extends t.Type<any, any, any> = MissingValidatorC,
     P extends t.Type<any, any, any> = MissingValidatorC,
     Q extends t.Type<any, any, any> = MissingValidatorC
-  >(
+    >(
     path: PathParams,
     validation: {
       body?: B;
@@ -86,7 +86,7 @@ function validationRoute<
       // TODO: params are always strings, so auto convert t.number to NumberFromString
       const result = reqType.params.decode(req.params);
       if (result.isLeft()) {
-        const report = PathReporter.report(result);
+        const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
       req.params = result.value;
@@ -95,7 +95,7 @@ function validationRoute<
       const result = reqType.query.decode(req.query);
       if (result.isLeft()) {
         // TODO: figure out which reporter we wanna use
-        const report = PathReporter.report(result);
+        const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
       req.query = result.value;
@@ -104,7 +104,7 @@ function validationRoute<
       const result = reqType.body.decode(req.body);
       if (result.isLeft()) {
         // TODO: figure out which reporter we wanna use
-        const report = PathReporter.report(result);
+        const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
       req.body = result.value;
