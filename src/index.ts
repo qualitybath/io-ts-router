@@ -94,7 +94,6 @@ function validationRoute<
     if (reqType.query) {
       const result = reqType.query.decode(req.query);
       if (result.isLeft()) {
-        // TODO: figure out which reporter we wanna use
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
@@ -103,7 +102,6 @@ function validationRoute<
     if (reqType.body) {
       const result = reqType.body.decode(req.body);
       if (result.isLeft()) {
-        // TODO: figure out which reporter we wanna use
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
