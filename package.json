@@ -9,7 +9,7 @@
     "prebuild": "rm -rf dist/"
   },
   "dependencies": {
-    "express-promise-router": "^3.0.3",
+    "express-promise-router": "^4.0.1",
     "io-ts-reporters": "^1.2.2"
   },
   "devDependencies": {
