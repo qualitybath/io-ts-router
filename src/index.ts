@@ -89,7 +89,7 @@ function validationRoute<
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
-      req.params = result.value;
+      req.params = result.right;
     }
     if (reqType.query) {
       const result = reqType.query.decode(req.query);
@@ -97,7 +97,7 @@ function validationRoute<
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
-      req.query = result.value;
+      req.query = result.right;
     }
     if (reqType.body) {
       const result = reqType.body.decode(req.body);
@@ -105,7 +105,7 @@ function validationRoute<
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
-      req.body = result.value;
+      req.body = result.right;
     }
     next();
   };
