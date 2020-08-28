@@ -220,11 +220,6 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-fp-ts@^1.0.0:
-  version "1.19.5"
-  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-1.19.5.tgz#3da865e585dfa1fdfd51785417357ac50afc520a"
-  integrity sha512-wDNqTimnzs8QqpldiId9OavWK2NptormjXnRJTQecNjzwfyp6P/8s/zG8e4h3ja3oqkKaY72UlTjQYt/1yXf9A==
-
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -274,17 +269,15 @@ io-ts-reporters@^1.2.2:
   resolved "https://registry.yarnpkg.com/io-ts-reporters/-/io-ts-reporters-1.2.2.tgz#4d3219777ea5219c7d8f6ffac01fd68e72426dd1"
   integrity sha512-igASwWWkDY757OutNcM6zTtdJf/eTZYkoe2ymsX2qpm5bKZLo74FJYjsCtMQOEdY7dRHLLEulCyFQwdN69GBCg==
 
-io-ts-types@^0.4.7:
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.4.8.tgz#e5fd8940ce7a5ddd780083c33989b3f8978918c2"
-  integrity sha512-E/o4y8I/yP5sVcC731K3T2Zi6BTvJljyJLqhHYkxzkc9fr9vAC2cU0y0xZ5aJqEDfl76zMeEiXkAkf/3gQYlvA==
+io-ts-types@^0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.5.10.tgz#54d2400c81de2a1bc97151b07faabc9ddd3ebb07"
+  integrity sha512-QVkgEsW03wTSgZ/PCZyan0boHmkPWExQob4nZ3pOxX/YQ9iWXLGPHMqYxSV0OpE/ulJA01owqTvsvFv+SfmiGg==
 
-io-ts@^1.10.4:
-  version "1.10.4"
-  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-1.10.4.tgz#cd5401b138de88e4f920adbcb7026e2d1967e6e2"
-  integrity sha512-b23PteSnYXSONJ6JQXRAlvJhuw8KOtkqa87W4wDtvMrud/DTJd5X+NpOOI+O/zZwVq6v0VLAaJ+1EDViKEuN9g==
-  dependencies:
-    fp-ts "^1.0.0"
+io-ts@^2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.10.tgz#447d02df51717464a90712b146ec8dbc21b4a74b"
+  integrity sha512-WHx5jJe7hPpc6JoSIVbD+Xn6tYqe3cRvNpX24d8Wi15/kxhRWa8apo0Gzag6Xg99sCNY9OHKylw/Vhv0JAbNPQ==
 
 ipaddr.js@1.9.1:
   version "1.9.1"

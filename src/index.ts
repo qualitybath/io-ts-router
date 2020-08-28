@@ -1,13 +1,13 @@
 import * as t from "io-ts";
 import { PathParams, RequestHandlerParams } from "express-serve-static-core"; // eslint-disable-line import/no-unresolved, import/extensions
-import reporter from 'io-ts-reporters';
+import reporter from "io-ts-reporters";
 import {
   Router,
   NextFunction,
   Request,
   Response,
   RequestHandler,
-  RouterOptions
+  RouterOptions,
 } from "express";
 import expressPromiseRouter from "express-promise-router";
 
@@ -23,7 +23,7 @@ export class IoTsValidationError extends Error {
 
 type Omit<O, K> = Pick<O, Exclude<keyof O, K>>;
 
-enum MissingValidator { }
+enum MissingValidator {}
 type MissingValidatorC = t.Type<MissingValidator>;
 
 type AddBody<V> = V extends MissingValidator ? {} : { body: V };
@@ -42,11 +42,11 @@ export type ValidatedRequestHandler<
   Body = MissingValidator,
   Params = MissingValidator,
   Query = MissingValidator
-  > = (
-    req: ValidatedRequest<Body, Params, Query>,
-    res: Response,
-    next: NextFunction
-  ) => any;
+> = (
+  req: ValidatedRequest<Body, Params, Query>,
+  res: Response,
+  next: NextFunction
+) => any;
 
 interface ValidationRouterMatcher {
   (path: PathParams, ...handlers: ValidatedRequestHandler[]): void;
@@ -55,7 +55,7 @@ interface ValidationRouterMatcher {
     B extends t.Type<any, any, any> = MissingValidatorC,
     P extends t.Type<any, any, any> = MissingValidatorC,
     Q extends t.Type<any, any, any> = MissingValidatorC
-    >(
+  >(
     path: PathParams,
     validation: {
       body?: B;
@@ -85,7 +85,7 @@ function validationRoute<
     if (reqType.params) {
       // TODO: params are always strings, so auto convert t.number to NumberFromString
       const result = reqType.params.decode(req.params);
-      if (result.isLeft()) {
+      if (result.left) {
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
@@ -93,7 +93,7 @@ function validationRoute<
     }
     if (reqType.query) {
       const result = reqType.query.decode(req.query);
-      if (result.isLeft()) {
+      if (result.left) {
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
@@ -101,7 +101,7 @@ function validationRoute<
     }
     if (reqType.body) {
       const result = reqType.body.decode(req.body);
-      if (result.isLeft()) {
+      if (result.left) {
         const report = reporter.report(result);
         throw new IoTsValidationError(report.join());
       }
@@ -114,7 +114,7 @@ function validationRoute<
 function validationRouter(options?: RouterOptions): ValidationRouter {
   const router = expressPromiseRouter(options);
   const methods: Method[] = ["get", "post", "put", "delete"];
-  methods.forEach(method => {
+  methods.forEach((method) => {
     const orig = router[method].bind(router);
     // TODO: figure out the anys
     router[method] = (path: any, validation: any, ...handlers: any[]) => {
