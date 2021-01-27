@@ -269,10 +269,10 @@ io-ts-reporters@^1.2.2:
   resolved "https://registry.yarnpkg.com/io-ts-reporters/-/io-ts-reporters-1.2.2.tgz#4d3219777ea5219c7d8f6ffac01fd68e72426dd1"
   integrity sha512-igASwWWkDY757OutNcM6zTtdJf/eTZYkoe2ymsX2qpm5bKZLo74FJYjsCtMQOEdY7dRHLLEulCyFQwdN69GBCg==
 
-io-ts-types@^0.5.10:
-  version "0.5.10"
-  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.5.10.tgz#54d2400c81de2a1bc97151b07faabc9ddd3ebb07"
-  integrity sha512-QVkgEsW03wTSgZ/PCZyan0boHmkPWExQob4nZ3pOxX/YQ9iWXLGPHMqYxSV0OpE/ulJA01owqTvsvFv+SfmiGg==
+io-ts-types@^0.5.13:
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/io-ts-types/-/io-ts-types-0.5.13.tgz#f4eba9dd982152695654d1f22c39c8041e0fea44"
+  integrity sha512-zN7QTJC8DmnRcDw/QO30U4EiK7UPcPq470cKH+NBZtgfUimqIr7hT+bTVZkVW+qF1HDZ0W3qUfvl5FOd/yBRpw==
 
 io-ts@^2.2.10:
   version "2.2.10"
