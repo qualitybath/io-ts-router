@@ -111,6 +111,60 @@ function validationRoute<
   };
 }
 
+const validationKeys = ["body", "params", "query"] as const;
+
+function isCodec(value: unknown): value is t.Type<any> {
+  return value != null && typeof (value as any).decode === "function";
+}
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  if (value == null || typeof value !== "object") {
+    return false;
+  }
+  const proto = Object.getPrototypeOf(value);
+  return proto === Object.prototype || proto === null;
+}
+
+// Anything that is not a recognised schema must be rejected rather than
+// silently dropped, otherwise middleware passed in it would never run.
+function toValidation(validation: unknown) {
+  if (!isPlainObject(validation)) {
+    throw new TypeError(
+      "Expected a handler, an array of handlers, or a { body, params, query } schema"
+    );
+  }
+  const source = validation;
+  const unknownKeys = Object.keys(source).filter(
+    (key) => !(validationKeys as readonly string[]).includes(key)
+  );
+  if (unknownKeys.length > 0) {
+    throw new TypeError(
+      `Unexpected keys in validation schema: ${unknownKeys.join(", ")}`
+    );
+  }
+  const reqType: {
+    body?: t.Type<any>;
+    params?: t.Type<any>;
+    query?: t.Type<any>;
+  } = {};
+  validationKeys.forEach((key) => {
+    const codec = source[key];
+    if (codec === undefined) {
+      return;
+    }
+    if (!isCodec(codec)) {
+      throw new TypeError(`Validation schema "${key}" must be an io-ts codec`);
+    }
+    reqType[key] = codec;
+  });
+  if (!reqType.body && !reqType.params && !reqType.query) {
+    throw new TypeError(
+      "Validation schema must include a body, params, or query codec"
+    );
+  }
+  return Object.freeze(reqType);
+}
+
 function validationRouter(options?: RouterOptions): ValidationRouter {
   const router = expressPromiseRouter(options);
   const methods: Method[] = ["get", "post", "put", "delete"];
@@ -118,11 +172,10 @@ function validationRouter(options?: RouterOptions): ValidationRouter {
     const orig = router[method].bind(router);
     // TODO: figure out the anys
     router[method] = (path: any, validation: any, ...handlers: any[]) => {
-      // TODO: handle array without path and or validation
-      if (typeof validation === "function") {
+      if (typeof validation === "function" || Array.isArray(validation)) {
         return orig(path, validation, ...handlers);
       }
-      return orig(path, validationRoute(validation), ...handlers);
+      return orig(path, validationRoute(toValidation(validation)), ...handlers);
     };
   });
   return router as any; // TODO: figure this out
